@@ -2,9 +2,8 @@ import math
 class calculations:
     def WCA(self, windDirection, windSpeed, trueCourse, trueAirSpeed):
             crossWindAngle = windSpeed * math.sin(math.radians(windDirection - trueCourse))
-            headwindAngle = math.degrees(windSpeed * math.cos(math.radians(windDirection - trueCourse)))
             windCorrectionAngle = math.degrees(math.asin(crossWindAngle / trueAirSpeed))
-            groundSpeed = trueAirSpeed - headwindAngle
+            groundSpeed = math.sqrt(trueAirSpeed**2 + windSpeed**2 - (2 * trueAirSpeed * windSpeed * math.cos(math.radians(trueCourse - windDirection + windCorrectionAngle))))
             trueHeading = self.confirCompassHeading(trueCourse + windCorrectionAngle)
             return {"WCA":round(windCorrectionAngle), "TH":round(trueHeading), "GS":round(groundSpeed)}
         
