@@ -1,2 +1,2 @@
 # auto-NavLog
-run gui.py
+run main.py
