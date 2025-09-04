@@ -1,11 +1,48 @@
 import tkinter
 import tkinter.messagebox
 import customtkinter
-from calculations import calculations
+import math
 
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
+class calculations:
+    def WCA(self, windDirection, windSpeed, trueCourse, trueAirSpeed):
+            crossWindAngle = windSpeed * math.sin(math.radians(windDirection - trueCourse))
+            windCorrectionAngle = math.degrees(math.asin(crossWindAngle / trueAirSpeed))
+            groundSpeed = math.sqrt(trueAirSpeed**2 + windSpeed**2 - (2 * trueAirSpeed * windSpeed * math.cos(math.radians(trueCourse - windDirection + windCorrectionAngle))))
+            trueHeading = self.confirCompassHeading(trueCourse + windCorrectionAngle)
+            return {"WCA":round(windCorrectionAngle), "TH":round(trueHeading), "GS":round(groundSpeed)}
+        
+    def compassHeading(self, magneticHeading, compassDeviation):
+        compassHeading = self.confirCompassHeading(magneticHeading + compassDeviation)
+        return round(compassHeading)
+        
+    def magneticHeading(self, trueHeading, variation):
+        magneticHeading = self.confirCompassHeading(trueHeading + variation)
+        return round(magneticHeading)
+        
+    def confirCompassHeading(self, heading):
+        if heading < 0:
+            heading += 360
+        elif heading >= 360:
+            heading -= 360
+        return heading
+        
+    def timeEnroute(self, distance, groundSpeed):
+        timeEnroute = distance / groundSpeed
+        timeEnrouteHours = timeEnroute
+        hours = int(timeEnroute)
+        minutes = (timeEnroute - hours) * 60
+        seconds = (minutes - int(minutes)) * 60
+        minutes = minutes + (hours * 60)
+        return {"time":f"{int(minutes)}:{int(seconds):02d}", "hrs":timeEnrouteHours}
+        
+    def fuelUsed(self, fuelFlow, timeEnrouteHours):
+        fuelUsed = fuelFlow * timeEnrouteHours
+        return round(fuelUsed, 2)
+    
+      
 
 class App(customtkinter.CTk):
     def __init__(self):
@@ -156,8 +193,7 @@ class App(customtkinter.CTk):
             time_enroute = calc.timeEnroute(distance, wac_results["GS"])["time"]
             frames.winfo_children()[13].configure(text=time_enroute)
             fuel_used = calc.fuelUsed(fuel_flow, calc.timeEnroute(distance, wac_results["GS"])["hrs"])
-            frames.winfo_children()[14].configure(text=fuel_used)
-                
+            frames.winfo_children()[14].configure(text=fuel_used)          
         
 if __name__ == "__main__":
     app = App()
