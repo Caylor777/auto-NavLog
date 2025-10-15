@@ -1,2 +1,1 @@
-# auto-NavLog
-run gui.py
+# UNDER CONSTRUCTION
