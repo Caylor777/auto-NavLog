@@ -1,8 +1,8 @@
-function Buttons() {
+function Buttons(props) {
     return (
-        <div id="buttons">
-        <button class="button" id="addPointButton">+</button>
-        <button class="button" id="removePointButton">-</button>
+    <div id="buttons">
+        <button onClick={props.addPointFunction} className="button" id="addPointButton">+</button>
+        <button onClick={props.removePointFunction} className="button" id="removePointButton">-</button>
     </div>
     );
 }

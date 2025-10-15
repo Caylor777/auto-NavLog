@@ -8,7 +8,7 @@
 
 #navBar {
     display: flex;
-    max-width: 1100px;
+    max-width: 90%;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
@@ -45,27 +45,30 @@
 #pointsTable {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    display: flex; /* center inner table */
+    justify-content: center;
+    width: 100%;
 }
 
 #pointsTable table {
-    width: 100%;
-    max-width: 1100px; /* same max width as nav to align */
+    width: auto; /* let the table size to its content; wrapper centers it */
+    max-width: 90%; /* same max width as nav to align */
     min-width: 0px; /* allow the table to shrink on small screens */
     border-collapse: collapse;
-    margin: 0; /* table is centered by the wrapper */
+    margin: 0 auto; /* center when narrower than wrapper */
 }
 
 #tableLabel {
     font-size: 100%;
     text-align: center;
-    width: 3rem;
+    width: 6vw;
 }
 
 .inputRows {
     padding: 0.1rem;
     margin: 0;
     font-size: 1rem;
-    width: 3rem;
+    width: 6vw;
     text-align: center;
     color: white;
     background-color: rgb(60, 60, 60);
@@ -75,11 +78,11 @@
 
 .outputRows {
     padding: 0.25rem 0.4rem;
-    margin: 0;
-    width: 3rem;
+    margin: 0rem;
+    width: 6vw;
     font-size: 1rem;
     background-color: rgb(60, 60, 60);
-    border-radius: 0.25rem;
+    border-radius: 0.5em;
     box-shadow: 0 0 0.1rem rgb(65, 65, 65);
     display: inline-block;
     vertical-align: middle;
@@ -104,10 +107,11 @@
     align-items: left;
     gap: 0.5rem;
     margin-top: 0.5rem;
+    margin-left: 5vw;
 }
 
 /* responsive: on small screens, left-align and allow table to take full width */
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     #pointsTable {
         justify-content: flex-start; /* align table to the left */
         padding: 0.25rem; /* reduce padding on small screens */
@@ -116,12 +120,7 @@
 
     #pointsTable table {
         min-width: 0; /* allow columns to shrink/wrap instead of forcing horizontal scroll */
-        width: 100%;
-        max-width: none;
-    }
-
-    #navBar {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        width: 90%;
+        max-width: 90%;
     }
 }
