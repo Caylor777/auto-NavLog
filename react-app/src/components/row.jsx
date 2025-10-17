@@ -7,7 +7,7 @@ function Row(props) {
             <th><input onInput={update} type="number" className="inputRows"id={`trueAirSpeedInput${props.rowNumber}`} placeholder="000" min="0" /></th>
             <th><input onInput={update} type="number" className="inputRows"id={`windDirectionInput${props.rowNumber}`} placeholder="000" min="0" max="360" /></th>
             <th><input onInput={update} type="number" className="inputRows"id={`windSpeedInput${props.rowNumber}`} placeholder="00" min="0" /></th>
-            <th><input onInput={update} type="number" className="inputRows"id={`variationInput${props.rowNumber}`} placeholder="00" min="0" max="360" /></th>
+            <th><input onInput={update} type="number" className="inputRows"id={`variationInput${props.rowNumber}`} placeholder="00" /></th>
             <th><input onInput={update} type="number" className="inputRows"id={`fuelFlowInput${props.rowNumber}`} placeholder="00" min="0" /></th>
             <th><input onInput={update} type="number" className="inputRows"id={`distanceInput${props.rowNumber}`} placeholder="00" min="0" /></th>
             <th><label className="outputRows" id={`wcaOutput${props.rowNumber}`}>--</label></th>

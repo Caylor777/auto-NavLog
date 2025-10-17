@@ -28,21 +28,22 @@
     function confirCompassHeading(heading){
         if (heading < 0) {
             heading += 360
-            return (heading)
+            return heading
         }
-
-        return (heading -= 360)
+        if (heading >= 360) {
+            return heading -= heading - 360
+        }
+        return heading
     }
         
     function timeEnroute(distance, groundSpeed){
         let timeEnroute = distance / groundSpeed
         let timeEnrouteHours = timeEnroute
-        let hours = timeEnroute
+        let hours = Math.floor(timeEnroute)
         let minutes = (timeEnroute - hours) * 60
-        let seconds = (minutes - (minutes)) * 60
+        let seconds = (minutes - Math.floor(minutes)) * 60
         minutes = minutes + (hours * 60)
-        let output = {"time" : `${Math.floor(minutes)}:${Math.round(seconds).toString().padStart(2, '0')}`, "hrs" : timeEnrouteHours}
-        return (output)
+        return {"time":`${Math.floor(minutes)}:${Math.floor(seconds).toString().padStart(2, '0')}`, "hrs":timeEnrouteHours}
     }
         
     function fuelUsed(fuelFlow, timeEnrouteHours){
