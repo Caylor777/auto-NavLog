@@ -1,6 +1,5 @@
     function WCA(windDirection, windSpeed, trueCourse, trueAirSpeed) {
         const crossWindAngle = windSpeed * Math.sin(radians(windDirection - trueCourse));
-        console.log(crossWindAngle);
         const windCorrectionAngle = degrees(Math.asin(crossWindAngle / trueAirSpeed));
         const groundSpeed = Math.sqrt(
         trueAirSpeed ** 2 + windSpeed ** 2 -

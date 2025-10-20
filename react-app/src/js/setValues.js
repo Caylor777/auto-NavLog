@@ -19,6 +19,7 @@ function update() {
             SetValue(`wcaOutput${i}`, result["WCA"]);
             SetValue(`trueHeadingOutput${i}`, result["TH"]);
             SetValue(`groundSpeedOutput${i}`, result["GS"]);
+            console.log("update executed");
 
             if (!((GetValue(`distanceInput${i}`) == null))) {
                 let result = timeEnroute(
@@ -48,21 +49,10 @@ function update() {
         }
     }
         
-    let totalDistance = 0
-    let totalTime = 0
-    let totalFuel = 0
-    for (let j = 1; j <= rowCount; j++) {
-        if (!(GetValue(`distanceInput${j}`) == null)) {
-            totalDistance += GetValue(`distanceInput${j}`)
-        }
-        if (!(document.getElementById(`timeEnRouteOutput${j}`).innerText === "--:--")) {
-            let time = document.getElementById(`timeEnRouteOutput${j}`).innerText.split(":")
-            totalTime += (Number(time[0]) / 60) + (Number(time[1]) / 3600)
-        }
-        if (!(document.getElementById(`fuelUsedOutput${j}`).innerText === "--")) {
-            totalFuel += Number(document.getElementById(`fuelUsedOutput${j}`).innerText)
-        }
-    }
+    let totals = total(rowCount);
+    SetValue("totalDistanceOutput", totals["totalDistance"]);
+    SetValue("totalTimeEnRouteOutput", totals["totalTime"]);
+    SetValue("totalFuelUsedOutput", totals["totalFuel"]);
 }
 
 function SetValue(id, value) {
@@ -72,6 +62,32 @@ function SetValue(id, value) {
 function GetValue(id) {
     let value = document.getElementById(id).value;
     return value === "" ? null : Number(value);
+}
+
+function total(rowCount) {
+    let totalDistance = 0;
+    let totalTimeMins = 0;
+    let totalTimeSecs = 0;
+    let totalFuel = 0;
+    for (let j = 1; j <= rowCount; j++) {
+        if (!(GetValue(`distanceInput${j}`) === "--")) {
+            totalDistance += GetValue(`distanceInput${j}`)
+        }
+        if (!(document.getElementById(`timeEnRouteOutput${j}`).innerText === "--:--")) {
+            let time = document.getElementById(`timeEnRouteOutput${j}`).innerText.split(":")
+            totalTimeMins += Number(time[0]);
+            totalTimeSecs += Number(time[1]);
+        }
+        if (!(document.getElementById(`fuelUsedOutput${j}`).innerText === "--")) {
+            totalFuel += Number(document.getElementById(`fuelUsedOutput${j}`).innerText)
+        }   
+    }
+
+    return {
+        "totalDistance": totalDistance,
+        "totalTime" : `${totalTimeMins}:${totalTimeSecs}`,
+        "totalFuel": Math.round(totalFuel * 100) / 100
+    };
 }
 
 export { update };
