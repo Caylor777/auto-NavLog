@@ -1,5 +1,5 @@
 # Auto-NavLog
-Create checkride level navigation logs with eiase
+Create a checkride level navigation logs with eiase
 
 ## https://caylor777.github.io/auto-NavLog/
 
