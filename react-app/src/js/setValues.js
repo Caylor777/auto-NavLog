@@ -68,6 +68,7 @@ function total(rowCount) {
     let totalDistance = 0;
     let totalTimeMins = 0;
     let totalTimeSecs = 0;
+    let totalTimeMinsOverflow = 0;
     let totalFuel = 0;
     for (let j = 1; j <= rowCount; j++) {
         if (!(GetValue(`distanceInput${j}`) === "--")) {
@@ -77,6 +78,9 @@ function total(rowCount) {
             let time = document.getElementById(`timeEnRouteOutput${j}`).innerText.split(":")
             totalTimeMins += Number(time[0]);
             totalTimeSecs += Number(time[1]);
+            totalTimeMinsOverflow += Math.floor(totalTimeSecs / 60);
+            totalTimeSecs = totalTimeSecs % 60;
+            totalTimeMins += totalTimeMinsOverflow;
         }
         if (!(document.getElementById(`fuelUsedOutput${j}`).innerText === "--")) {
             totalFuel += Number(document.getElementById(`fuelUsedOutput${j}`).innerText)
@@ -85,7 +89,7 @@ function total(rowCount) {
 
     return {
         "totalDistance": totalDistance,
-        "totalTime" : `${totalTimeMins}:${totalTimeSecs}`,
+        "totalTime" : `${totalTimeMins}:${String(totalTimeSecs).padStart(2, '0')}`,
         "totalFuel": Math.round(totalFuel * 100) / 100
     };
 }
