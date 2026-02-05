@@ -94,4 +94,30 @@ function total(rowCount) {
     };
 }
 
+function asteriskPress() {
+    document.addEventListener('keydown', (e) => {
+            const isAsterisk = e.key === '*' || e.code === 'NumpadMultiply';
+            if (!isAsterisk) return;
+
+            const active = document.activeElement;
+            if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) {
+                console.log(`* pressed — focused element: id="${active.id}" value="${active.value}"`);
+                fillColumn(active.id, active.value);
+            }
+        });
+    }
+
+    // initialize the listener
+    asteriskPress();
+    
+function fillColumn(startId, value) {
+    const rowCount = document.getElementById("ouputTable").childElementCount;
+    let startNumber = parseInt(startId.replace( /^\D+/g, ''));
+    let id = startId.replace(startNumber, '');
+    for (let i = startNumber; i <= rowCount; i++) {
+        document.getElementById(`${id}${i}`).value = value;
+        update();
+    }
+}
+
 export { update };
