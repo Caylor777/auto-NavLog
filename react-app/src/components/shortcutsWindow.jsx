@@ -8,7 +8,7 @@ function ShortcutsWindow({ onClose }) {
                     <button id="closeButton" onClick={onClose}>×</button>
                     <h1>Shortcuts</h1>
                     <p>* : fill currently selected column down with current input</p>
-                    <p>+ : add a new row to the bottom </p>
+                    <p>= : add a new row to the bottom </p>
                     <p>- : remove a bottom most row</p>
                 </div>
             </div>
