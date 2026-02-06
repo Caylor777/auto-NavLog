@@ -1,0 +1,83 @@
+#navBar {
+    display: flex;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.1rem solid white;    
+}
+
+#logo {
+    height: 5rem;
+    width: auto;
+}
+
+#navButtons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#shortcutsButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-size: 1.2rem;
+    background-color: rgb(60, 60, 60);
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#shortcutsButton:hover {
+    background-color: rgb(80, 80, 80);
+    border-color: rgb(150, 150, 150);
+    box-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.2);
+}
+
+#shortcutsButton:active {
+    background-color: rgb(50, 50, 50);
+    transform: scale(0.98);
+}
+
+#cmdIcon {
+    height: 1.5rem;
+    width: auto;
+}
+
+#githubLogo {
+    height: 1.7rem;
+    width: auto;
+}
+
+#githubButton {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: white;
+    font-size: 1rem;
+    background-color: rgb(60, 60, 60);
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#githubButton:hover {
+    background-color: rgb(80, 80, 80);
+    border-color: rgb(150, 150, 150);
+    box-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.2);
+}
+
+#githubButton:active {
+    background-color: rgb(50, 50, 50);
+    transform: scale(0.98);
+}

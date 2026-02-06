@@ -1,4 +1,5 @@
 import { update } from '../js/setValues.js';
+import "../css/table.css";
 
 function Row(props) {
     return (
