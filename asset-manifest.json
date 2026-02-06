@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/auto-NavLog/static/css/main.228cc255.css",
-    "main.js": "/auto-NavLog/static/js/main.531d7d69.js",
+    "main.css": "/auto-NavLog/static/css/main.3661f14b.css",
+    "main.js": "/auto-NavLog/static/js/main.6c884e07.js",
     "static/js/453.71c876a1.chunk.js": "/auto-NavLog/static/js/453.71c876a1.chunk.js",
     "index.html": "/auto-NavLog/index.html",
-    "main.228cc255.css.map": "/auto-NavLog/static/css/main.228cc255.css.map",
-    "main.531d7d69.js.map": "/auto-NavLog/static/js/main.531d7d69.js.map",
+    "main.3661f14b.css.map": "/auto-NavLog/static/css/main.3661f14b.css.map",
+    "main.6c884e07.js.map": "/auto-NavLog/static/js/main.6c884e07.js.map",
     "453.71c876a1.chunk.js.map": "/auto-NavLog/static/js/453.71c876a1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.228cc255.css",
-    "static/js/main.531d7d69.js"
+    "static/css/main.3661f14b.css",
+    "static/js/main.6c884e07.js"
   ]
 }
